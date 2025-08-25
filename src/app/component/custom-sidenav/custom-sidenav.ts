@@ -85,6 +85,7 @@ export type MenuItem = {
     }
     .selected-menu-item{
       border-left-color: red;
+      background: rgba(0,0,0,0.05);
     }
     `
   ]
