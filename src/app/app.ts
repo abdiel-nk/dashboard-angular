@@ -19,7 +19,7 @@ import { CustomSidenav } from "./component/custom-sidenav/custom-sidenav";
     CustomSidenav],
 
   template: `
-    <mat-toolbar class="mat-elevation-z3">
+    <mat-toolbar class="mat-elevation-z24">
       <button mat-icon-button (click)="collapsed.set(!collapsed())">
         <mat-icon>menu</mat-icon>
       </button>
@@ -41,6 +41,9 @@ import { CustomSidenav } from "./component/custom-sidenav/custom-sidenav";
     mat-toolbar{
       position: relative;
       z-index:5;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      
+
     }
 
     .content {
@@ -48,6 +51,16 @@ import { CustomSidenav } from "./component/custom-sidenav/custom-sidenav";
     }
     mat-sidenav-container{
       height: calc(100vh - 64px);
+      
+    }
+    mat-sidenav{
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      border-radius:0px;
+
+    }
+    mat-sidenav, mat-sidenav-content{
+      transition: all 500ms ease-in-out;
+      
     }
 
     `

@@ -27,7 +27,14 @@ export type MenuItem = {
     </div>
 
     <mat-nav-list>
-      <a mat-list-item *ngFor="let item of menuItems()" [routerLink]="item.route">
+      <a mat-list-item
+      class="menu-item"
+      *ngFor="let item of menuItems()" 
+      [routerLink]="item.route"
+      routerLinkActive="selected-menu-item"
+      #rla="routerLinkActive"
+      [activated]="rla.isActive"
+      >
         <mat-icon matListItemIcon >{{item.icon}}</mat-icon>
         <span matListItemTitle *ngIf="!sideNavCollapsed()" >{{item.label}}</span>
       </a>
@@ -36,8 +43,15 @@ export type MenuItem = {
   styles: [
     
     `
+    :host * {
+      transition: all 500ms ease-in-out; 
+    }
+    a{
+      padding:10px;
+      border-radius: 0px !important;
+    }
     .sidenav-header{
-      padding-top:24px;
+      padding-top:24px;  
       text-align:center;
       margin:0;
       > img{
@@ -46,6 +60,7 @@ export type MenuItem = {
         margin-bottom: 10px;
       }
       .header-text{
+        height: 3rem;
         > h2{
           margin:0;
           font-size: 1rem;
@@ -59,16 +74,24 @@ export type MenuItem = {
     }
     .hide-header-text{
       opacity:0;
-      height: 0px;
+      height: 0px !important;
     }
+    .menu-item{
+      border-left: 5px solid;
+      border-left-color: rgba(0,0,0,0);
+      background-color: #ffffff !important;
 
+
+    }
+    .selected-menu-item{
+      border-left-color: red;
+    }
     `
   ]
 })
 export class CustomSidenav {
 
   
-
   menuItems = signal<MenuItem[]>([
     {
       icon: 'dashboard',
